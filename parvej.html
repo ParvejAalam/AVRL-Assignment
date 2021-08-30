@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		.center {
+  			width: 50%;
+ 		    border: 2px solid;
+ 		    height: 200px;
+ 		    display: flex;
+ 		    align-items: flex-end;
+ 		    
+	    }
+	    div{
+	    	width: 20%;
+	    	height: 200px;
+	    	transition: height 0.9s;
+	    }
+	    .btn{
+	    	margin-top: 11px;
+    		justify-content: space-around;
+   			display: flex;
+    		width: 50%;
+    		height: 25px;
+    		color: white;
+	    }
+	   
+	</style>
+	<meta charset="utf-8">
+	<title>Vanilla</title>
+</head>
+<body>
+	<div class = "center">
+		<div id = "one" style="background-color: lightblue;"></div>
+		<div id = "two" style="background-color: lightpink;"></div>
+		<div id="three" style="background-color: lightgreen;"></div>
+		<div id= "four" style="background-color: lightcyan;"></div>
+		<div id= "five" style="background-color: lightgray;"></div>
+	</div>
+	<div class="btn">
+		<button onclick="start()" style="background-color: green;  color:white;">Start</button>
+	    <button onclick="stop()" style="background-color: red; color:white;">Stop</button>
+	</div>
+
+	<script type="text/javascript">
+		const maxHeight = 200;
+		const minHeight = 10;
+		var intervalId;
+		let elementA= document.getElementById("one");
+		let elementB= document.getElementById("two");
+		let elementC= document.getElementById("three");
+		let elementD= document.getElementById("four");
+		let elementE= document.getElementById("five");
+
+
+		function timerTask() {
+			elementA.style.height = randomIntFromInterval(minHeight, maxHeight) + "px";
+			elementB.style.height = randomIntFromInterval(minHeight, maxHeight) + "px";
+			elementC.style.height = randomIntFromInterval(minHeight, maxHeight) + "px";
+			elementD.style.height = randomIntFromInterval(minHeight, maxHeight) + "px";
+			elementE.style.height = randomIntFromInterval(minHeight, maxHeight) + "px";
+		}
+
+		function randomIntFromInterval(min, max) { // min and max included 
+  			return Math.floor(Math.random() * (max - min + 1) + min)
+		}
+
+		// timerTask();
+		const start = () => {
+			intervalId = setInterval(timerTask , 1000)
+		}
+
+		const stop = () => {
+			console.log("inside stop")
+			clearInterval(intervalId);
+		}
+
+	</script>
+</body>
+</html>
